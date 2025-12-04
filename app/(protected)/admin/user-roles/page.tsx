@@ -6,6 +6,7 @@ import {
 	listRoles as listRolesAction,
 	listUsers as listUsersAction
 } from "./actions";
+import PageHeader from "@/components/page/PageHeader";
 
 type User = {
 	id: string;
@@ -38,18 +39,11 @@ export default async function UserRolesPage() {
 
 	return (
 		<div className="space-y-8">
-			<header className="flex items-end justify-between">
-				<div>
-					<h1 className="text-2xl font-bold text-slate-100">User roles</h1>
-					<p className="text-sm text-slate-400">Assign and revoke roles for users.</p>
-				</div>
-				<a
-					href="/admin"
-					className="text-sm text-slate-400 hover:text-slate-200 underline underline-offset-4"
-				>
-					← Back to Admin
-				</a>
-			</header>
+			<PageHeader
+				title="User roles"
+				subtitle="Assign and revoke roles for users."
+				href="/admin"
+			/>
 
 			{/* Assign role */}
 			<section className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">

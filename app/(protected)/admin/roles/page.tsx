@@ -1,5 +1,6 @@
 // app/(protected)/admin/roles/page.tsx
 import {listRoles, createRole, updateRole, deleteRole} from "./actions";
+import PageHeader from "@/components/page/PageHeader";
 
 type Role = {
 	id: string;
@@ -11,18 +12,11 @@ export default async function RolesPage() {
 
 	return (
 		<div className="space-y-8">
-			<header className="flex items-end justify-between">
-				<div>
-					<h1 className="text-2xl font-bold text-slate-100">Roles</h1>
-					<p className="text-sm text-slate-400">Create, edit and delete roles.</p>
-				</div>
-				<a
-					href="/admin"
-					className="text-sm text-slate-400 hover:text-slate-200 underline underline-offset-4"
-				>
-					← Back to Admin
-				</a>
-			</header>
+			<PageHeader
+				title="Roles"
+				subtitle="Create, edit and delete roles."
+				href="/admin"
+			/>
 
 			{/* Create role */}
 			<section className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
