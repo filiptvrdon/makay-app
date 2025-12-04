@@ -1,5 +1,6 @@
 // app/(protected)/admin/page.tsx
 import PageHeader from "@/components/page/PageHeader";
+import Link from "next/link";
 
 export default function AdminIndexPage() {
 	return (
@@ -12,19 +13,14 @@ export default function AdminIndexPage() {
 			/>
 			<ul className="list-disc pl-6 text-slate-200">
 				<li>
-					<a className="underline underline-offset-4 hover:text-slate-100" href="/admin/roles">
+					<Link className="underline underline-offset-4 hover:text-slate-100" href="/admin/roles">
 						Manage roles
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a className="underline underline-offset-4 hover:text-slate-100" href="/admin/movements">
-						Manage movements
-					</a>
-				</li>
-				<li>
-					<a className="underline underline-offset-4 hover:text-slate-100" href="/admin/user-roles">
+					<Link className="underline underline-offset-4 hover:text-slate-100" href="/admin/user-roles">
 						Manage user roles
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</div>
