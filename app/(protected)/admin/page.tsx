@@ -13,6 +13,11 @@ export default function AdminIndexPage() {
             Manage roles
           </a>
         </li>
+        <li>
+          <a className="underline underline-offset-4 hover:text-slate-100" href="/admin/user-roles">
+            Manage user roles
+          </a>
+        </li>
       </ul>
     </div>
   );
