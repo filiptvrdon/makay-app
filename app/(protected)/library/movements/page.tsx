@@ -1,5 +1,6 @@
 // app/(protected)/admin/movements/page.tsx
 import PageHeader from "@/components/page/PageHeader";
+import { Button } from "@/components/ui/button";
 import {
   listMovements,
   createMovement,
@@ -53,12 +54,12 @@ export default async function MovementsPage() {
             />
           </div>
           <div className="sm:col-span-2">
-            <button
+            <Button
               type="submit"
               className="inline-flex items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-700"
             >
               Add movement
-            </button>
+            </Button>
           </div>
         </form>
       </section>
@@ -116,22 +117,22 @@ export default async function MovementsPage() {
                   <div className="flex justify-end gap-2">
                     <form id={`update-${m.id}`} action={updateMovement}>
                       <input type="hidden" name="id" value={m.id} />
-                      <button
+                      <Button
                         type="submit"
                         className="inline-flex items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-700"
                         title="Save"
                       >
                         Save
-                      </button>
+                      </Button>
                     </form>
                     <form action={deleteMovement}>
                       <input type="hidden" name="id" value={m.id} />
-                      <button
+                      <Button
                         type="submit"
                         className="inline-flex items-center justify-center rounded-md border border-red-900/60 bg-red-900/30 px-3 py-1.5 text-xs font-medium text-red-200 hover:bg-red-900/50"
                       >
                         Delete
-                      </button>
+                      </Button>
                     </form>
                   </div>
                 </td>

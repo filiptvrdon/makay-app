@@ -1,4 +1,4 @@
-import {Checkbox} from "@/components/generic/ui/checkbox";
+import {Checkbox} from "@/components/ui/checkbox";
 
 export function TutorialStep({
 	                             title,

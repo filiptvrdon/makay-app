@@ -4,32 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3beeca6a-22f7-4c98-8c01-03b4de248a28" name="Changes" comment="refactor: extract `PageHeader` component and update admin pages for consistency">
-      <change afterPath="$PROJECT_DIR$/app/(protected)/library/movements/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/library/movements/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(protected)/library/page.tsx" afterDir="false" />
+    <list default="true" id="3beeca6a-22f7-4c98-8c01-03b4de248a28" name="Changes" comment="refactor: rename `UserRoleAssignment` to `User2Role`, add CRUD actions for movements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/admin/roles/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/roles/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/admin/user-roles/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/user-roles/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/admin/user-roles/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/user-roles/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(protected)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/library/movements/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/library/movements/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/error/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/error/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/forgot-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forgot-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/login/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/sign-up-success/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/sign-up-success/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/auth-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/auth-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/deploy-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/deploy-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/env-var-warning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/env-var-warning.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/forgot-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/forgot-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/login-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/logout-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/logout-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/sign-up-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/sign-up-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/theme-switcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/theme-switcher.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/generic/update-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/update-password-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/page/PageHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/page/PageHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/update-password/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/update-password/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navigation/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/auth-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/deploy-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/deploy-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/env-var-warning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/env-var-warning.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/forgot-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/forgot-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/logout-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logout-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/next-logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/next-logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/sign-up-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sign-up-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/supabase-logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/supabase-logo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/theme-switcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/theme-switcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/badge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/update-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/update-password-form.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/tutorial/code-block.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tutorial/code-block.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/tutorial/tutorial-step.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tutorial/tutorial-step.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/supabase/proxy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/supabase/proxy.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +99,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "settings.editor.selected.configurable": "configurable.group.build",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/Users/filiptvrdon/Documents/GitHub/makay-app/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -100,6 +110,7 @@
       <recent name="$PROJECT_DIR$/app/(protected)/library" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/custom" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/app/(protected)/library" />
       <recent name="$PROJECT_DIR$/components/generic" />
@@ -136,7 +147,7 @@
       <updated>1764686025469</updated>
       <workItem from="1764686026701" duration="22476000" />
       <workItem from="1764784958687" duration="3749000" />
-      <workItem from="1764826842538" duration="4258000" />
+      <workItem from="1764826842538" duration="9105000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -186,7 +197,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764825023026</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="chore: update formatting for consistency across components and config files">
+      <option name="closed" value="true" />
+      <created>1764838452421</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764838452421</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor: rename `UserRoleAssignment` to `User2Role`, add CRUD actions for movements">
+      <option name="closed" value="true" />
+      <created>1764838460980</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1764838460980</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +224,9 @@
     <MESSAGE value="secured routes and navbar" />
     <MESSAGE value="roles crud manage route" />
     <MESSAGE value="add user roles management page and support for role assignments" />
-    <option name="LAST_COMMIT_MESSAGE" value="add user roles management page and support for role assignments" />
+    <MESSAGE value="refactor: extract `PageHeader` component and update admin pages for consistency" />
+    <MESSAGE value="chore: update formatting for consistency across components and config files" />
+    <MESSAGE value="refactor: rename `UserRoleAssignment` to `User2Role`, add CRUD actions for movements" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: rename `UserRoleAssignment` to `User2Role`, add CRUD actions for movements" />
   </component>
 </project>

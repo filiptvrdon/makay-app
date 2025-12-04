@@ -4,6 +4,7 @@
 import {useRouter} from "next/navigation";
 import {createClient as createSupabaseClient} from "@/lib/supabase/client";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 type NavbarProps = {
 	email: string | null;
@@ -32,12 +33,14 @@ export function Navbar({email}: NavbarProps) {
 
 				<div className="flex items-center gap-3">
 					{email && (<span className="hidden text-sm text-slate-300 sm:inline">{email}</span>)}
-					<button
+					<Button
 						onClick={handleSignOut}
 						className="rounded-lg border border-slate-700 px-3 py-1.5 text-sm text-slate-100 hover:bg-slate-800"
+						variant="outline"
+						size="sm"
 					>
 						Sign out
-					</button>
+					</Button>
 				</div>
 			</div>
 		</header>
