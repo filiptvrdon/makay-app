@@ -43,6 +43,7 @@ export default async function UserRolesPage() {
 				title="User roles"
 				subtitle="Assign and revoke roles for users."
 				href="/admin"
+				backLabel="← Back to Admin"
 			/>
 
 			{/* Assign role */}

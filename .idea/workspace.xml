@@ -4,11 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3beeca6a-22f7-4c98-8c01-03b4de248a28" name="Changes" comment="add user roles management page and support for role assignments">
+    <list default="true" id="3beeca6a-22f7-4c98-8c01-03b4de248a28" name="Changes" comment="refactor: extract `PageHeader` component and update admin pages for consistency">
+      <change afterPath="$PROJECT_DIR$/app/(protected)/library/movements/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/library/movements/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(protected)/library/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/admin/roles/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/roles/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/admin/user-roles/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/user-roles/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(protected)/admin/user-roles/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/admin/user-roles/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(protected)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(protected)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/error/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/error/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/sign-up-success/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/sign-up-success/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/auth-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/auth-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/deploy-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/deploy-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/env-var-warning.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/env-var-warning.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/forgot-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/forgot-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/login-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/logout-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/logout-button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/sign-up-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/sign-up-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/theme-switcher.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/theme-switcher.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/generic/update-password-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/generic/update-password-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/page/PageHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/page/PageHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tutorial/code-block.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tutorial/code-block.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/tutorial/tutorial-step.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/tutorial/tutorial-step.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +79,29 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "roles-admin-crud-page",
+    "git-widget-placeholder": "exercise",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/filiptvrdon/Documents/GitHub/makay-app/app/(protected)/library",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/Users/filiptvrdon/Documents/GitHub/makay-app/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/(protected)/library" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/app/(protected)/library" />
       <recent name="$PROJECT_DIR$/components/generic" />
     </key>
   </component>
@@ -109,6 +136,7 @@
       <updated>1764686025469</updated>
       <workItem from="1764686026701" duration="22476000" />
       <workItem from="1764784958687" duration="3749000" />
+      <workItem from="1764826842538" duration="4258000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />

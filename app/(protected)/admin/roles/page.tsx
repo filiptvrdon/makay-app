@@ -16,6 +16,7 @@ export default async function RolesPage() {
 				title="Roles"
 				subtitle="Create, edit and delete roles."
 				href="/admin"
+				backLabel="← Back to Admin"
 			/>
 
 			{/* Create role */}

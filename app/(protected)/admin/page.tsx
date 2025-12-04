@@ -6,11 +6,19 @@ export default function AdminIndexPage() {
 		<div className="space-y-6">
 			<PageHeader
 				title="Admin"
-				subtitle="Admin tools and management pages."/>
+				subtitle="Admin tools and management pages."
+				href="/"
+				backLabel="← Back"
+			/>
 			<ul className="list-disc pl-6 text-slate-200">
 				<li>
 					<a className="underline underline-offset-4 hover:text-slate-100" href="/admin/roles">
 						Manage roles
+					</a>
+				</li>
+				<li>
+					<a className="underline underline-offset-4 hover:text-slate-100" href="/admin/movements">
+						Manage movements
 					</a>
 				</li>
 				<li>
