@@ -7,6 +7,7 @@ import {
 	listUsers as listUsersAction
 } from "./actions";
 import PageHeader from "@/components/page/PageHeader";
+import { Button } from "@/components/ui/button";
 
 type User = {
 	id: string;
@@ -43,6 +44,7 @@ export default async function UserRolesPage() {
 				title="User roles"
 				subtitle="Assign and revoke roles for users."
 				href="/admin"
+				backLabel="← Back to Admin"
 			/>
 
 			{/* Assign role */}
@@ -84,15 +86,15 @@ export default async function UserRolesPage() {
 								</option>
 							))}
 						</select>
-						<button
-							type="submit"
-							className="inline-flex w-full items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-700 sm:w-auto"
-						>
-							Assign
-						</button>
-					</form>
-				)}
-			</section>
+ 					<Button
+ 						type="submit"
+ 						className="inline-flex w-full items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-700 sm:w-auto"
+ 					>
+ 						Assign
+ 					</Button>
+ 					</form>
+ 				)}
+ 			</section>
 
 			{/* Current assignments */}
 			<section className="rounded-lg border border-slate-800 overflow-hidden">
@@ -143,13 +145,13 @@ export default async function UserRolesPage() {
 									<form action={revokeRole} className="flex justify-end gap-2">
 										<input type="hidden" name="user_id" value={a.user_id}/>
 										<input type="hidden" name="role_id" value={a.role_id}/>
-										<button
-											type="submit"
-											className="inline-flex items-center justify-center rounded-md border border-red-900/60 bg-red-900/30 px-3 py-1.5 text-xs font-medium text-red-200 hover:bg-red-900/50"
-										>
-											Revoke
-										</button>
-									</form>
+  								<Button
+  									type="submit"
+  									className="inline-flex items-center justify-center rounded-md border border-red-900/60 bg-red-900/30 px-3 py-1.5 text-xs font-medium text-red-200 hover:bg-red-900/50"
+  								>
+  									Revoke
+  								</Button>
+  							</form>
 								</td>
 							</tr>
 						);

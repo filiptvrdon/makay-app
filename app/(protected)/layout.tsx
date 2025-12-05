@@ -1,7 +1,7 @@
 // app/(protected)/layout.tsx
 import {redirect} from "next/navigation";
 import {createClient as createServerSupabaseClient} from "@/lib/supabase/server";
-import {Navbar} from "@/components/Navbar";
+import {Navbar} from "@/components/navigation/Navbar";
 
 
 export default async function ProtectedLayout({

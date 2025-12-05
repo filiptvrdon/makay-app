@@ -1,5 +1,6 @@
 // app/(protected)/admin/roles/page.tsx
 import {listRoles, createRole, updateRole, deleteRole} from "./actions";
+import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/page/PageHeader";
 
 type Role = {
@@ -16,6 +17,7 @@ export default async function RolesPage() {
 				title="Roles"
 				subtitle="Create, edit and delete roles."
 				href="/admin"
+				backLabel="← Back to Admin"
 			/>
 
 			{/* Create role */}
@@ -29,14 +31,14 @@ export default async function RolesPage() {
 						className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600"
 						required
 					/>
-					<button
-						type="submit"
-						className="inline-flex w-full items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-700 sm:w-auto"
-					>
-						Add role
-					</button>
-				</form>
-			</section>
+ 				<Button
+ 					type="submit"
+ 					className="inline-flex w-full items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-slate-700 sm:w-auto"
+ 				>
+ 					Add role
+ 				</Button>
+ 				</form>
+ 			</section>
 
 			{/* List and edit roles */}
 			<section className="rounded-lg border border-slate-800 overflow-hidden">
@@ -78,19 +80,19 @@ export default async function RolesPage() {
 								{/* Delete role form */}
 								<form action={deleteRole} className="flex justify-end">
 									<input type="hidden" name="id" value={r.id}/>
-									<button
-										type="submit"
-										className="inline-flex items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-700"
-										title="Save"
-									>
-										Save
-									</button>
-									<button
-										type="submit"
-										className="inline-flex items-center justify-center rounded-md border border-red-900/60 bg-red-900/30 px-3 py-1.5 text-xs font-medium text-red-200 hover:bg-red-900/50"
-									>
-										Delete
-									</button>
+ 								<Button
+ 									type="submit"
+ 									className="inline-flex items-center justify-center rounded-md border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-slate-700"
+ 									title="Save"
+ 								>
+ 									Save
+ 								</Button>
+ 								<Button
+ 									type="submit"
+ 									className="inline-flex items-center justify-center rounded-md border border-red-900/60 bg-red-900/30 px-3 py-1.5 text-xs font-medium text-red-200 hover:bg-red-900/50"
+ 								>
+ 									Delete
+ 								</Button>
 
 								</form>
 							</td>

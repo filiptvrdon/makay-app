@@ -7,7 +7,7 @@ const USERS2ROLES = "users_2_roles" as const;
 const USERS = "users" as const;
 const ROLES = "roles" as const;
 
-export type UserRoleAssignment = {
+export type User2Role = {
 	user_id: string;
 	role_id: string;
 };
@@ -47,7 +47,7 @@ export async function listRoles(): Promise<Role[]> {
 }
 
 // Read: list all user-role assignments
-export async function listAssignments(): Promise<UserRoleAssignment[]> {
+export async function listAssignments(): Promise<User2Role[]> {
 	const supabase = await createClient();
 	const {data, error} = await supabase
 		.from(USERS2ROLES)
@@ -55,7 +55,7 @@ export async function listAssignments(): Promise<UserRoleAssignment[]> {
 		.order("user_id", {ascending: true})
 		.order("role_id", {ascending: true});
 	if (error) throw new Error(error.message);
-	return (data ?? []) as UserRoleAssignment[];
+	return (data ?? []) as User2Role[];
 }
 
 // Create: assign a role to a user (idempotent via upsert)
