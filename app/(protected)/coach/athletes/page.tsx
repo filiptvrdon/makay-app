@@ -1,6 +1,14 @@
 // app/(protected)/coach/athletes/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import { listMyAthletes, type Athlete } from "./actions";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/table";
 
 export default async function CoachAthletesPage() {
   let error: Error | null = null;
@@ -28,46 +36,46 @@ export default async function CoachAthletesPage() {
       ) : null}
 
       <section className="rounded-lg border border-slate-800 overflow-hidden">
-        <table className="min-w-full divide-y divide-slate-800">
-          <thead className="bg-slate-900/60">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <Table className="min-w-full divide-y divide-slate-800">
+          <TableHeader className="bg-slate-900/60">
+            <TableRow>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Name
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
+              </TableHead>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Athlete ID
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
+              </TableHead>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
                 Created
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-800 bg-slate-900/20">
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody className="divide-y divide-slate-800 bg-slate-900/20">
             {!athletes || athletes.length === 0 ? (
-              <tr>
-                <td colSpan={3} className="px-4 py-6 text-center text-slate-400">
+              <TableRow>
+                <TableCell colSpan={3} className="px-4 py-6 text-center text-slate-400">
                   No athletes found.
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ) : (
               athletes.map((a: Athlete) => (
-                <tr key={a.id} className="hover:bg-slate-900/40">
-                  <td className="px-4 py-3 align-top">
+                <TableRow key={a.id} className="hover:bg-slate-900/40">
+                  <TableCell className="px-4 py-3 align-top">
                     <span className="text-slate-100 text-sm">{a.name ?? "(no name)"}</span>
-                  </td>
-                  <td className="px-4 py-3 align-top">
+                  </TableCell>
+                  <TableCell className="px-4 py-3 align-top">
                     <code className="text-xs text-slate-400 select-all break-all">{a.id}</code>
-                  </td>
-                  <td className="px-4 py-3 align-top">
+                  </TableCell>
+                  <TableCell className="px-4 py-3 align-top">
                     <span className="text-xs text-slate-400">
                       {new Date(a.created_at).toLocaleString()}
                     </span>
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))
             )}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </section>
     </div>
   );

@@ -2,6 +2,14 @@
 import PageHeader from "@/components/page/PageHeader";
 import { Button } from "@/components/ui/button";
 import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/table";
+import {
   listMovements,
   createMovement,
   updateMovement,
@@ -66,26 +74,26 @@ export default async function MovementsPage() {
 
       {/* List and edit movements */}
       <section className="rounded-lg border border-slate-800 overflow-hidden">
-        <table className="min-w-full divide-y divide-slate-800">
-          <thead className="bg-slate-900/60">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Name</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Instructions</th>
-              <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Resource URLs</th>
-              <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-800 bg-slate-900/20">
+        <Table className="min-w-full divide-y divide-slate-800">
+          <TableHeader className="bg-slate-900/60">
+            <TableRow>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Name</TableHead>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Instructions</TableHead>
+              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">Resource URLs</TableHead>
+              <TableHead className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wider text-slate-400">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody className="divide-y divide-slate-800 bg-slate-900/20">
             {movements.length === 0 && (
-              <tr>
-                <td colSpan={4} className="px-4 py-6 text-center text-slate-400">
+              <TableRow>
+                <TableCell colSpan={4} className="px-4 py-6 text-center text-slate-400">
                   No movements yet.
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             )}
             {movements.map((m) => (
-              <tr key={m.id} className="hover:bg-slate-900/40 align-top">
-                <td className="px-4 py-3">
+              <TableRow key={m.id} className="hover:bg-slate-900/40 align-top">
+                <TableCell className="px-4 py-3">
                   <input
                     type="text"
                     name="name"
@@ -94,8 +102,8 @@ export default async function MovementsPage() {
                     className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-1.5 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600"
                     required
                   />
-                </td>
-                <td className="px-4 py-3">
+                </TableCell>
+                <TableCell className="px-4 py-3">
                   <textarea
                     name="instructions"
                     defaultValue={m.instructions ?? ""}
@@ -103,8 +111,8 @@ export default async function MovementsPage() {
                     form={`update-${m.id}`}
                     className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-1.5 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600"
                   />
-                </td>
-                <td className="px-4 py-3">
+                </TableCell>
+                <TableCell className="px-4 py-3">
                   <textarea
                     name="resource_urls"
                     defaultValue={(m.resource_urls ?? []).join(", ")}
@@ -112,8 +120,8 @@ export default async function MovementsPage() {
                     form={`update-${m.id}`}
                     className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-1.5 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-600"
                   />
-                </td>
-                <td className="px-4 py-3">
+                </TableCell>
+                <TableCell className="px-4 py-3">
                   <div className="flex justify-end gap-2">
                     <form id={`update-${m.id}`} action={updateMovement}>
                       <input type="hidden" name="id" value={m.id} />
@@ -135,11 +143,11 @@ export default async function MovementsPage() {
                       </Button>
                     </form>
                   </div>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </section>
     </div>
   );
