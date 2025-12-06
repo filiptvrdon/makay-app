@@ -50,12 +50,12 @@ export type GenericTableProps<T> = {
  *   data={athletes}
  *   columns=[
  *     { header: "Name", cell: (a) => (
- *         <Link href={`/coach/athletes/${a.id}`} className="text-slate-100 text-sm">
+ *         <Link href={`/tables/athletes/${a.id}`} className="text-slate-100 text-sm">
  *           {a.name ?? "(no name)"}
  *         </Link>
  *       ), thClassName: "px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400", tdClassName: "px-4 py-3 align-top" },
  *     { header: "Athlete ID", cell: (a) => (
- *         <Link href={`/coach/athletes/${a.id}`} className="text-xs text-slate-400">
+ *         <Link href={`/tables/athletes/${a.id}`} className="text-xs text-slate-400">
  *           <code className="select-all break-all">{a.id}</code>
  *         </Link>
  *       ), thClassName: "px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400", tdClassName: "px-4 py-3 align-top" },

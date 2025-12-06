@@ -1,16 +1,9 @@
-// app/(protected)/coach/athletes/[id]/page.tsx
+// app/(protected)/tables/athletes/[id]/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import Page from "@/components/shared/Page";
 import { listMesocyclesForAthlete, type Mesocycle } from "./actions";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableHead,
-  TableCell,
-} from "@/components/ui/table";
 import {Athlete, getMyAthleteById} from "@/app/(protected)/coach/athletes/actions";
+import MesocyclesTable from "@/components/tables/MesocyclesTable";
 
 type PageProps = {
   params: Promise<{ id: string }>; // Next 15: params is async
@@ -53,54 +46,9 @@ export default async function CoachAthleteMesocyclesPage(props: PageProps) {
         </div>
       ) : null}
 
-      <section className="rounded-lg border border-slate-800 overflow-hidden">
-        <Table className="min-w-full divide-y divide-slate-800">
-          <TableHeader className="bg-slate-900/60">
-            <TableRow>
-              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Name
-              </TableHead>
-              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Date range
-              </TableHead>
-              <TableHead className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Created
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody className="divide-y divide-slate-800 bg-slate-900/20">
-            {!mesocycles || mesocycles.length === 0 ? (
-              <TableRow>
-                <TableCell colSpan={3} className="px-4 py-6 text-center text-slate-400">
-                  No mesocycles found.
-                </TableCell>
-              </TableRow>
-            ) : (
-              mesocycles.map((m: Mesocycle) => (
-                <TableRow key={m.id} className="hover:bg-slate-900/40">
-                  <TableCell className="px-4 py-3 align-top text-slate-100 text-sm">
-                    {m.name}
-                  </TableCell>
-                  <TableCell className="px-4 py-3 align-top text-xs text-slate-400">
-                    {formatDateRange(m.start_date, m.end_date)}
-                  </TableCell>
-                  <TableCell className="px-4 py-3 align-top text-xs text-slate-400">
-                    {new Date(m.created_at).toLocaleString()}
-                  </TableCell>
-                </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </section>
+      <MesocyclesTable mesocycles={mesocycles} />
     </Page>
   );
 }
 
-function formatDateRange(start: string | null, end: string | null): string {
-  const fmt = (d: string | null) => (d ? new Date(d).toLocaleDateString() : "—");
-  const s = fmt(start);
-  const e = fmt(end);
-  if (s === "—" && e === "—") return "—";
-  return `${s} – ${e}`;
-}
+// Table rendering moved to client component using GenericTable

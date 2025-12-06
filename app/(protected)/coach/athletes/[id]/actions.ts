@@ -16,7 +16,7 @@ export type Mesocycle = {
 };
 
 /**
- * Lists mesocycles for a given athlete, verifying the athlete is assigned to the current coach.
+ * Lists mesocycles for a given athlete, verifying the athlete is assigned to the current tables.
  * Throws on auth errors, missing link, or query errors.
  */
 export async function listMesocyclesForAthlete(
@@ -24,7 +24,7 @@ export async function listMesocyclesForAthlete(
 ): Promise<Mesocycle[]> {
   const supabase = await createClient();
 
-  // Current user (coach)
+  // Current user (tables)
   const { data: userResult, error: userError } = await supabase.auth.getUser();
   if (userError || !userResult?.user) {
     throw new Error("Unable to load user session");
@@ -32,7 +32,7 @@ export async function listMesocyclesForAthlete(
 
   const coachId = userResult.user.id;
 
-  // Verify the athlete is linked to this coach
+  // Verify the athlete is linked to this tables
   const { data: link, error: linkError } = await supabase
     .from("athletes_2_coaches")
     .select("athlete_id")

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import GenericTable, { type ColumnDefinition } from "@/components/shared/GenericTable";
+import GenericTable, { type ColumnDefinition } from "@/components/tables/GenericTable";
 
 // Local lightweight type to avoid importing server modules into a client component
 export type AthleteRow = {

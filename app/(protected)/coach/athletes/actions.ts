@@ -9,13 +9,13 @@ export type Athlete = {
 };
 
 /**
- * Returns athletes assigned to the currently authenticated coach.
+ * Returns athletes assigned to the currently authenticated tables.
  * Throws an Error if session lookup or queries fail.
  */
 export async function listMyAthletes(): Promise<Athlete[]> {
   const supabase = await createClient();
 
-  // Get current coach (authenticated user)
+  // Get current tables (authenticated user)
   const { data: userResult, error: userError } = await supabase.auth.getUser();
   if (userError || !userResult?.user) {
     throw new Error("Unable to load user session");
@@ -23,7 +23,7 @@ export async function listMyAthletes(): Promise<Athlete[]> {
 
   const coachId = userResult.user.id;
 
-  // Fetch athlete ids related to the current coach from the junction table
+  // Fetch athlete ids related to the current tables from the junction table
   const { data: links, error: linksError } = await supabase
     .from("athletes_2_coaches")
     .select("athlete_id")
@@ -50,8 +50,8 @@ export async function listMyAthletes(): Promise<Athlete[]> {
 }
 
 /**
- * Returns a single athlete assigned to the current coach by id.
- * Throws if the user is not authenticated, athlete is not assigned to this coach, or on query errors.
+ * Returns a single athlete assigned to the current tables by id.
+ * Throws if the user is not authenticated, athlete is not assigned to this tables, or on query errors.
  */
 export async function getMyAthleteById(id: string): Promise<Athlete> {
   const supabase = await createClient();
@@ -63,7 +63,7 @@ export async function getMyAthleteById(id: string): Promise<Athlete> {
 
   const coachId = userResult.user.id;
 
-  // Verify the athlete is linked to this coach
+  // Verify the athlete is linked to this tables
   const { data: link, error: linkError } = await supabase
     .from("athletes_2_coaches")
     .select("athlete_id")

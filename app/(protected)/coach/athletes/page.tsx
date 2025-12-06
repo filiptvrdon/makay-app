@@ -1,8 +1,8 @@
-// app/(protected)/coach/athletes/page.tsx
+// app/(protected)/tables/athletes/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import Page from "@/components/shared/Page";
 import { listMyAthletes, type Athlete } from "./actions";
-import AthletesTable from "@/components/coach/athletes/AthletesTable";
+import AthletesTable from "@/components/tables/AthletesTable";
 
 export default async function CoachAthletesPage() {
   let error: Error | null = null;
