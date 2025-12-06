@@ -42,7 +42,7 @@ export default async function MesocyclePage(props: PageProps) {
       <PageHeader
         title={microcycle ? microcycle.name : "Microcycle"}
         subtitle={microcycle ? `Planned: ${formatDateRange(microcycle.start_date, microcycle.end_date)}` : undefined}
-        href="/coach/athletes"
+        href="/coach"
         backLabel="← Back"
       />
 

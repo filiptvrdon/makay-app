@@ -9,7 +9,7 @@ export type Athlete = {
 };
 
 /**
- * Returns athletes assigned to the currently authenticated tables.
+ * Returns athlete assigned to the currently authenticated tables.
  * Throws an Error if session lookup or queries fail.
  */
 export async function listMyAthletes(): Promise<Athlete[]> {
@@ -53,7 +53,7 @@ export async function listMyAthletes(): Promise<Athlete[]> {
  * Returns a single athlete assigned to the current tables by id.
  * Throws if the user is not authenticated, athlete is not assigned to this tables, or on query errors.
  */
-export async function getMyAthleteById(id: string): Promise<Athlete> {
+export async function getAthleteById(id: string): Promise<Athlete> {
   const supabase = await createClient();
 
   const { data: userResult, error: userError } = await supabase.auth.getUser();

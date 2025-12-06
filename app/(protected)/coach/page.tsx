@@ -1,9 +1,18 @@
 // app/(protected)/admin/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import Page from "@/components/shared/Page";
-import Link from "next/link";
+import AthletesTable from "@/components/tables/AthletesTable";
+import {Athlete, listMyAthletes} from "@/app/(protected)/coach/actions";
 
-export default function CoachIndexPage() {
+export default async function CoachIndexPage() {
+	let error: Error | null = null;
+	let athletes: Athlete[] = [];
+
+	try {
+		athletes = await listMyAthletes();
+	} catch (e) {
+		error = e as Error;
+	}
     return (
         <>
             <Page>
@@ -13,13 +22,16 @@ export default function CoachIndexPage() {
                     href="/"
                     backLabel="← Back"
                 />
-                <ul className="list-disc pl-6 text-slate-200">
-                    <li>
-                        <Link className="underline underline-offset-4 hover:text-slate-100" href="/coach/athletes">
-                            My athletes
-                        </Link>
-                    </li>
-                </ul>
+
+	            <h2>My Trainees</h2>
+
+	            {error ? (
+		            <div className="rounded-md border border-red-900/60 bg-red-900/20 p-4 text-sm text-red-200">
+			            Failed to load athletes: {error.message}
+		            </div>
+	            ) : null}
+
+	            <AthletesTable athletes={athletes} />
             </Page>
 
 

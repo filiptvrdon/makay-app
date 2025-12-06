@@ -1,9 +1,9 @@
-// app/(protected)/tables/athletes/[id]/page.tsx
+// app/(protected)/tables/athlete/[id]/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import Page from "@/components/shared/Page";
 import { listMesocyclesForAthlete, type Mesocycle } from "./actions";
-import {Athlete, getMyAthleteById} from "@/app/(protected)/coach/athletes/actions";
 import MesocyclesTable from "@/components/tables/MesocyclesTable";
+import {Athlete, getAthleteById} from "@/app/(protected)/coach/actions";
 
 type PageProps = {
   params: Promise<{ id: string }>; // Next 15: params is async
@@ -25,7 +25,7 @@ export default async function CoachAthleteMesocyclesPage(props: PageProps) {
 	let athlete: Athlete | null = null;
 
 	try {
-		athlete = await getMyAthleteById(id);
+		athlete = await getAthleteById(id);
 	} catch (e) {
 		error = e as Error;
 	}

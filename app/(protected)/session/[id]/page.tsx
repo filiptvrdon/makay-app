@@ -22,7 +22,7 @@ export default async function SessionPage(props: PageProps) {
     error = e as Error;
   }
 
-  const backHref = session ? `/microcycle/${session.microcycle_id}` : "/coach/athletes";
+  const backHref = session ? `/microcycle/${session.microcycle_id}` : "/coach/athlete";
 
   return (
     <Page>

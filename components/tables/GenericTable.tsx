@@ -50,15 +50,15 @@ export type GenericTableProps<T> = {
  * Example usage:
  * ```tsx
  * <GenericTable
- *   data={athletes}
+ *   data={athlete}
  *   columns=[
  *     { header: "Name", cell: (a) => (
- *         <Link href={`/tables/athletes/${a.id}`} className="text-slate-100 text-sm">
+ *         <Link href={`/tables/athlete/${a.id}`} className="text-slate-100 text-sm">
  *           {a.name ?? "(no name)"}
  *         </Link>
  *       ), thClassName: "px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400", tdClassName: "px-4 py-3 align-top" },
  *     { header: "Athlete ID", cell: (a) => (
- *         <Link href={`/tables/athletes/${a.id}`} className="text-xs text-slate-400">
+ *         <Link href={`/tables/athlete/${a.id}`} className="text-xs text-slate-400">
  *           <code className="select-all break-all">{a.id}</code>
  *         </Link>
  *       ), thClassName: "px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400", tdClassName: "px-4 py-3 align-top" },
@@ -66,7 +66,7 @@ export type GenericTableProps<T> = {
  *         <span className="text-xs text-slate-400">{new Date(a.created_at).toLocaleString()}</span>
  *       ), thClassName: "px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-400", tdClassName: "px-4 py-3 align-top" },
  *   ]}
- *   emptyMessage="No athletes found."
+ *   emptyMessage="No athlete found."
  * />
  * ```
  */

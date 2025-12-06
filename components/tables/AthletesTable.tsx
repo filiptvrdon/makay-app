@@ -39,7 +39,7 @@ export default function AthletesTable({ athletes }: Props) {
       columns={columns}
       emptyMessage="No athletes found."
       rowClassName="cursor-pointer"
-      getRowHref={(a) => `/coach/athletes/${a.id}`}
+      getRowHref={(a) => `/athlete/${a.id}`}
     />
   );
 }
