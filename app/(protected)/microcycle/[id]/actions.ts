@@ -2,32 +2,31 @@
 
 import { createClient } from "@/lib/supabase/server";
 
-export type Mesocycle = {
+export type Microcycle = {
   id: string;
-  athlete_id: string;
-  coach_id: string | null;
+  mesocycle_id: string;
+  mesocycle_idx: number;
   name: string;
   description: string | null;
-  goal: string | null;
   start_date: string | null; // date
   end_date: string | null; // date
   created_at: string;
   updated_at: string;
 };
 
-export type MicrocycleListItem = {
+export type SessionListItem = {
   id: string;
-  mesocycle_idx: number;
+  microcycle_idx: number | null;
   name: string | null;
-  start_date: string | null;
-  end_date: string | null;
+  planned_date: string | null; // date
+  actual_date: string | null; // date
   created_at: string;
 };
 
 /**
  * Load a single mesocycle by id belonging to the current coach.
  */
-export async function getMesocycleById(id: string): Promise<Mesocycle | null> {
+export async function getMicrocycleById(id: string): Promise<Microcycle | null> {
   const supabase = await createClient();
 
   const { data: userResult, error: userError } = await supabase.auth.getUser();
@@ -35,42 +34,39 @@ export async function getMesocycleById(id: string): Promise<Mesocycle | null> {
     throw new Error("Unable to load user session");
   }
 
-  const coachId = userResult.user.id;
-
   const { data, error } = await supabase
-    .from("mesocycles")
+    .from("microcycles")
     .select(
-      "id, athlete_id, coach_id, name, description, goal, start_date, end_date, created_at, updated_at"
+      "id, mesocycle_id, mesocycle_idx, name, description, start_date, end_date, created_at, updated_at"
     )
     .eq("id", id)
-    .eq("coach_id", coachId)
     .maybeSingle();
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return (data as Mesocycle) ?? null;
+  return (data as Microcycle) ?? null;
 }
 
 /**
- * Load microcycles for a given mesocycle id.
+ * Load sessions for a given microcycle id.
  */
-export async function getMicrocyclesForMesocycle(
-  mesocycleId: string
-): Promise<MicrocycleListItem[] | null> {
+export async function getSessionsForMicrocycle(
+  microcycleId: string
+): Promise<SessionListItem[] | null> {
   const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from("microcycles")
-    .select("id, mesocycle_idx, name, start_date, end_date, created_at")
-    .eq("mesocycle_id", mesocycleId)
-    .order("mesocycle_idx", { ascending: true })
+    .from("sessions")
+    .select("id, microcycle_idx, name, planned_date, actual_date, created_at")
+    .eq("microcycle_id", microcycleId)
+    .order("microcycle_idx", { ascending: true, nullsFirst: true })
     .order("created_at", { ascending: true });
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return (data as MicrocycleListItem[]) ?? null;
+  return (data as SessionListItem[]) ?? null;
 }
