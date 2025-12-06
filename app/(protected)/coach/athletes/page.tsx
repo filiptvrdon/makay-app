@@ -1,6 +1,7 @@
 // app/(protected)/coach/athletes/page.tsx
 import PageHeader from "@/components/page/PageHeader";
 import { listMyAthletes, type Athlete } from "./actions";
+import Link from "next/link";
 import {
   Table,
   TableHeader,
@@ -59,17 +60,24 @@ export default async function CoachAthletesPage() {
               </TableRow>
             ) : (
               athletes.map((a: Athlete) => (
-                <TableRow key={a.id} className="hover:bg-slate-900/40">
+                <TableRow
+                  key={a.id}
+                  className="hover:bg-slate-900/40 cursor-pointer"
+                >
                   <TableCell className="px-4 py-3 align-top">
-                    <span className="text-slate-100 text-sm">{a.name ?? "(no name)"}</span>
+                    <Link href={`/coach/athletes/${a.id}`} className="text-slate-100 text-sm">
+                      {a.name ?? "(no name)"}
+                    </Link>
                   </TableCell>
                   <TableCell className="px-4 py-3 align-top">
-                    <code className="text-xs text-slate-400 select-all break-all">{a.id}</code>
+                    <Link href={`/coach/athletes/${a.id}`} className="text-xs text-slate-400">
+                      <code className="select-all break-all">{a.id}</code>
+                    </Link>
                   </TableCell>
                   <TableCell className="px-4 py-3 align-top">
-                    <span className="text-xs text-slate-400">
+                    <Link href={`/coach/athletes/${a.id}`} className="text-xs text-slate-400">
                       {new Date(a.created_at).toLocaleString()}
-                    </span>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))

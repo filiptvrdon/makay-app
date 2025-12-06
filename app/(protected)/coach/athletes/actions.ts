@@ -48,3 +48,50 @@ export async function listMyAthletes(): Promise<Athlete[]> {
 
   return (athletesData ?? []) as Athlete[];
 }
+
+/**
+ * Returns a single athlete assigned to the current coach by id.
+ * Throws if the user is not authenticated, athlete is not assigned to this coach, or on query errors.
+ */
+export async function getMyAthleteById(id: string): Promise<Athlete> {
+  const supabase = await createClient();
+
+  const { data: userResult, error: userError } = await supabase.auth.getUser();
+  if (userError || !userResult?.user) {
+    throw new Error("Unable to load user session");
+  }
+
+  const coachId = userResult.user.id;
+
+  // Verify the athlete is linked to this coach
+  const { data: link, error: linkError } = await supabase
+    .from("athletes_2_coaches")
+    .select("athlete_id")
+    .eq("coach_id", coachId)
+    .eq("athlete_id", id)
+    .maybeSingle();
+
+  if (linkError) {
+    throw new Error(linkError.message);
+  }
+
+  if (!link) {
+    throw new Error("Athlete not found or not assigned to you");
+  }
+
+  const { data: athlete, error: athleteError } = await supabase
+    .from("athletes")
+    .select("id, name, created_at")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (athleteError) {
+    throw new Error(athleteError.message);
+  }
+
+  if (!athlete) {
+    throw new Error("Athlete not found");
+  }
+
+  return athlete as Athlete;
+}
