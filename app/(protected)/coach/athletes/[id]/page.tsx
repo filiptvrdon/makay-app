@@ -1,5 +1,6 @@
 // app/(protected)/coach/athletes/[id]/page.tsx
 import PageHeader from "@/components/page/PageHeader";
+import Page from "@/components/shared/Page";
 import { listMesocyclesForAthlete, type Mesocycle } from "./actions";
 import {
   Table,
@@ -38,7 +39,7 @@ export default async function CoachAthleteMesocyclesPage(props: PageProps) {
 
 
 	return (
-    <div className="space-y-6">
+    <Page>
       <PageHeader
         title={athlete ? (athlete.name || "Athlete profile") : "Athlete profile"}
         subtitle={athlete ? "Basic info" : undefined}
@@ -92,7 +93,7 @@ export default async function CoachAthleteMesocyclesPage(props: PageProps) {
           </TableBody>
         </Table>
       </section>
-    </div>
+    </Page>
   );
 }
 

@@ -10,6 +10,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import PageHeader from "@/components/page/PageHeader";
+import Page from "@/components/shared/Page";
 
 type Role = {
 	id: string;
@@ -20,7 +21,7 @@ export default async function RolesPage() {
 	const roles = (await listRoles()) as Role[];
 
 	return (
-		<div className="space-y-8">
+		<Page>
 			<PageHeader
 				title="Roles"
 				subtitle="Create, edit and delete roles."
@@ -109,6 +110,6 @@ export default async function RolesPage() {
 					</TableBody>
 				</Table>
 			</section>
-		</div>
+		</Page>
 	);
 }

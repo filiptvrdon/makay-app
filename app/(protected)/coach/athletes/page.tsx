@@ -1,5 +1,6 @@
 // app/(protected)/coach/athletes/page.tsx
 import PageHeader from "@/components/page/PageHeader";
+import Page from "@/components/shared/Page";
 import { listMyAthletes, type Athlete } from "./actions";
 import AthletesTable from "@/components/coach/athletes/AthletesTable";
 
@@ -14,7 +15,7 @@ export default async function CoachAthletesPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <Page>
       <PageHeader
         title="My athletes"
         subtitle="Athletes assigned to you."
@@ -29,6 +30,6 @@ export default async function CoachAthletesPage() {
       ) : null}
 
       <AthletesTable athletes={athletes} />
-    </div>
+    </Page>
   );
 }

@@ -1,5 +1,6 @@
 // app/(protected)/admin/movements/page.tsx
 import PageHeader from "@/components/page/PageHeader";
+import Page from "@/components/shared/Page";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -21,7 +22,7 @@ export default async function MovementsPage() {
   const movements = (await listMovements()) as Movement[];
 
   return (
-    <div className="space-y-8">
+    <Page>
       <PageHeader
         title="Movements"
         subtitle="Create, edit and delete movements."
@@ -149,6 +150,6 @@ export default async function MovementsPage() {
           </TableBody>
         </Table>
       </section>
-    </div>
+    </Page>
   );
 }

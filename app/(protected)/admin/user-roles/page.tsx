@@ -7,6 +7,7 @@ import {
 	listUsers as listUsersAction
 } from "./actions";
 import PageHeader from "@/components/page/PageHeader";
+import Page from "@/components/shared/Page";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -47,7 +48,7 @@ export default async function UserRolesPage() {
 	const hasData = users.length > 0 && roles.length > 0;
 
 	return (
-		<div className="space-y-8">
+		<Page>
 			<PageHeader
 				title="User roles"
 				subtitle="Assign and revoke roles for users."
@@ -167,6 +168,6 @@ export default async function UserRolesPage() {
 					</TableBody>
 				</Table>
 			</section>
-		</div>
+		</Page>
 	);
 }
