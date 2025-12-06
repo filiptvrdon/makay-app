@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import GenericTable, { type ColumnDefinition } from "@/components/tables/GenericTable";
 
 export type SessionRow = {
@@ -20,25 +21,41 @@ export default function SessionsTable({ sessions }: Props) {
     {
       header: "Name",
       cell: (s) => (
-        <span className="text-slate-100 text-sm">{s.name && s.name.trim().length > 0 ? s.name : "(no name)"}</span>
+        <Link href={`/session/${s.id}`} className="text-slate-100 text-sm">
+          {s.name && s.name.trim().length > 0 ? s.name : "(no name)"}
+        </Link>
       ),
     },
     {
       header: "Index",
-      cell: (s) => <span className="text-xs text-slate-400">{s.microcycle_idx ?? "—"}</span>,
+      cell: (s) => (
+        <Link href={`/session/${s.id}`} className="text-xs text-slate-400">
+          {s.microcycle_idx ?? "—"}
+        </Link>
+      ),
     },
     {
       header: "Planned",
-      cell: (s) => <span className="text-xs text-slate-400">{formatDate(s.planned_date)}</span>,
+      cell: (s) => (
+        <Link href={`/session/${s.id}`} className="text-xs text-slate-400">
+          {formatDate(s.planned_date)}
+        </Link>
+      ),
     },
     {
       header: "Actual",
-      cell: (s) => <span className="text-xs text-slate-400">{formatDate(s.actual_date)}</span>,
+      cell: (s) => (
+        <Link href={`/session/${s.id}`} className="text-xs text-slate-400">
+          {formatDate(s.actual_date)}
+        </Link>
+      ),
     },
     {
       header: "Created",
       cell: (s) => (
-        <span className="text-xs text-slate-400">{new Date(s.created_at).toLocaleString()}</span>
+        <Link href={`/session/${s.id}`} className="text-xs text-slate-400">
+          {new Date(s.created_at).toLocaleString()}
+        </Link>
       ),
     },
   ];
@@ -49,7 +66,6 @@ export default function SessionsTable({ sessions }: Props) {
       columns={columns}
       emptyMessage="No sessions found."
       rowClassName="cursor-pointer"
-      getRowHref={(s) => `/session/${s.id}`}
     />
   );
 }
