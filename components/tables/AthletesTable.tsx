@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import GenericTable, { type ColumnDefinition } from "@/components/tables/GenericTable";
 
 // Local lightweight type to avoid importing server modules into a client component
@@ -18,27 +17,19 @@ export default function AthletesTable({ athletes }: Props) {
   const columns: ColumnDefinition<AthleteRow>[] = [
     {
       header: "Name",
-      cell: (a) => (
-        <Link href={`/coach/athletes/${a.id}`} className="text-slate-100 text-sm">
-          {a.name ?? "(no name)"}
-        </Link>
-      ),
+      cell: (a) => <span className="text-slate-100 text-sm">{a.name ?? "(no name)"}</span>,
     },
     {
       header: "Athlete ID",
       cell: (a) => (
-        <Link href={`/coach/athletes/${a.id}`} className="text-xs text-slate-400">
+        <span className="text-xs text-slate-400">
           <code className="select-all break-all">{a.id}</code>
-        </Link>
+        </span>
       ),
     },
     {
       header: "Created",
-      cell: (a) => (
-        <Link href={`/coach/athletes/${a.id}`} className="text-xs text-slate-400">
-          {new Date(a.created_at).toLocaleString()}
-        </Link>
-      ),
+      cell: (a) => <span className="text-xs text-slate-400">{new Date(a.created_at).toLocaleString()}</span>,
     },
   ];
 
@@ -48,6 +39,7 @@ export default function AthletesTable({ athletes }: Props) {
       columns={columns}
       emptyMessage="No athletes found."
       rowClassName="cursor-pointer"
+      getRowHref={(a) => `/coach/athletes/${a.id}`}
     />
   );
 }

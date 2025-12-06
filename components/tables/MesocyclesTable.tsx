@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import GenericTable, { type ColumnDefinition } from "@/components/tables/GenericTable";
 
 export type MesocycleRow = {
@@ -19,27 +18,15 @@ export default function MesocyclesTable({ mesocycles }: Props) {
   const columns: ColumnDefinition<MesocycleRow>[] = [
     {
       header: "Name",
-      cell: (m) => (
-        <Link href={`/mesocycle/${m.id}`} className="text-slate-100 text-sm">
-          {m.name}
-        </Link>
-      ),
+      cell: (m) => <span className="text-slate-100 text-sm">{m.name}</span>,
     },
     {
       header: "Date range",
-      cell: (m) => (
-        <Link href={`/mesocycle/${m.id}`} className="text-xs text-slate-400">
-          {formatDateRange(m.start_date, m.end_date)}
-        </Link>
-      ),
+      cell: (m) => <span className="text-xs text-slate-400">{formatDateRange(m.start_date, m.end_date)}</span>,
     },
     {
       header: "Created",
-      cell: (m) => (
-        <Link href={`/mesocycle/${m.id}`} className="text-xs text-slate-400">
-          {new Date(m.created_at).toLocaleString()}
-        </Link>
-      ),
+      cell: (m) => <span className="text-xs text-slate-400">{new Date(m.created_at).toLocaleString()}</span>,
     },
   ];
 
@@ -49,6 +36,7 @@ export default function MesocyclesTable({ mesocycles }: Props) {
       columns={columns}
       emptyMessage="No mesocycles found."
       rowClassName="cursor-pointer"
+      getRowHref={(m) => `/mesocycle/${m.id}`}
     />
   );
 }

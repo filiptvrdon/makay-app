@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import {
   Table,
   TableHeader,
@@ -37,6 +38,8 @@ export type GenericTableProps<T> = {
   tableClassName?: string;
   headerClassName?: string;
   bodyClassName?: string;
+  // When provided, each cell becomes a fully clickable link (absolute overlay) to this href
+  getRowHref?: (item: T, index: number) => string;
 };
 
 /**
@@ -124,15 +127,33 @@ export function GenericTable<T>(props: GenericTableProps<T>) {
                 key={getRowKey(item, ri)}
                 className={cn("hover:bg-slate-900/40", resolveRowClass(item, ri))}
               >
-                {columns.map((col, ci) => (
-                  <TableCell key={ci} className={cn("px-4 py-3 align-top", col.tdClassName)}>
-                    {col.cell
-                      ? col.cell(item, ri)
-                      : col.key
-                      ? String((item as any)[col.key] ?? "")
-                      : null}
-                  </TableCell>
-                ))}
+                {columns.map((col, ci) => {
+                  const content = col.cell
+                    ? col.cell(item, ri)
+                    : col.key
+                    ? String((item as never)[col.key] ?? "")
+                    : null;
+                  const href = props.getRowHref ? props.getRowHref(item, ri) : undefined;
+                  return (
+                    <TableCell
+                      key={ci}
+                      className={cn(
+                        "px-4 py-3 align-top",
+                        href ? "relative" : undefined,
+                        col.tdClassName
+                      )}
+                    >
+                      {content}
+                      {href ? (
+                        <Link
+                          href={href}
+                          className="absolute inset-0"
+                          aria-label="Open row"
+                        />
+                      ) : null}
+                    </TableCell>
+                  );
+                })}
               </TableRow>
             ))
           )}
