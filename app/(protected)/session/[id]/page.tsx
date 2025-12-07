@@ -60,7 +60,7 @@ export default async function SessionPage(props: PageProps) {
               </div>
               <div className="flex items-start gap-2">
                 <dt className="text-slate-400">Actual Date:</dt>
-                <dd className="text-slate-200">{formatDate(session.actual_date)}</dd>
+                <dd className="text-slate-200">{formatDate(session.completed_on)}</dd>
               </div>
               <div className="flex items-start gap-2 sm:col-span-2">
                 <dt className="text-slate-400">Description:</dt>

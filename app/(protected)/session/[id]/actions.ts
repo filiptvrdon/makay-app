@@ -9,7 +9,7 @@ export type Session = {
   name: string | null;
   description: string | null;
   planned_date: string | null; // date
-  actual_date: string | null; // date
+  completed_on: string | null; // date
   created_at: string;
   updated_at: string;
 };
@@ -28,7 +28,7 @@ export async function getSessionById(id: string): Promise<Session | null> {
   const { data, error } = await supabase
     .from("sessions")
     .select(
-      "id, microcycle_id, microcycle_idx, name, description, planned_date, actual_date, created_at, updated_at"
+      "id, microcycle_id, microcycle_idx, name, description, planned_date, completed_on, created_at, updated_at"
     )
     .eq("id", id)
     .maybeSingle();

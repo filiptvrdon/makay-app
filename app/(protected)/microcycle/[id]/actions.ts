@@ -19,7 +19,7 @@ export type SessionListItem = {
   microcycle_idx: number | null;
   name: string | null;
   planned_date: string | null; // date
-  actual_date: string | null; // date
+  completed_on: string | null; // date
   created_at: string;
 };
 
@@ -59,7 +59,7 @@ export async function getSessionsForMicrocycle(
 
   const { data, error } = await supabase
     .from("sessions")
-    .select("id, microcycle_idx, name, planned_date, actual_date, created_at")
+    .select("id, microcycle_idx, name, planned_date, completed_on, created_at")
     .eq("microcycle_id", microcycleId)
     .order("microcycle_idx", { ascending: true, nullsFirst: true })
     .order("created_at", { ascending: true });

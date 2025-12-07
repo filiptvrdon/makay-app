@@ -22,12 +22,15 @@ export async function listMyAthletes(): Promise<Athlete[]> {
   }
 
   const coachId = userResult.user.id;
+	console.log("========> coachId: ", coachId);
 
   // Fetch athlete ids related to the current tables from the junction table
   const { data: links, error: linksError } = await supabase
     .from("athletes_2_coaches")
     .select("athlete_id")
     .eq("coach_id", coachId);
+
+  console.log("========> links: ", links);
 
   if (linksError) {
     throw new Error(linksError.message);
@@ -41,6 +44,8 @@ export async function listMyAthletes(): Promise<Athlete[]> {
     .select("id, name, created_at")
     .in("id", athleteIds)
     .order("created_at", { ascending: false });
+
+	console.log("========> athletesData: ", athletesData);
 
   if (athletesError) {
     throw new Error(athletesError.message);
