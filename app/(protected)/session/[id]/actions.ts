@@ -1,3 +1,4 @@
+
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
@@ -10,6 +11,19 @@ export type Session = {
   description: string | null;
   planned_date: string | null; // date
   completed_on: string | null; // date
+  created_at: string;
+  updated_at: string;
+};
+
+export type ExercisePrescription = {
+  id: string;
+  session_id: string;
+  exercise: string;
+  prescribed: Record<string, any>;
+  actual: Record<string, any> | null;
+  coach_notes: string | null;
+  athlete_notes: string | null;
+  completed_at: string | null; // timestamptz
   created_at: string;
   updated_at: string;
 };
@@ -38,4 +52,27 @@ export async function getSessionById(id: string): Promise<Session | null> {
   }
 
   return (data as Session) ?? null;
+}
+
+/**
+ * Load exercise prescriptions belonging to a session.
+ */
+export async function getExercisePrescriptionsForSession(
+  sessionId: string
+): Promise<ExercisePrescription[] | null> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("exercise_prescriptions")
+    .select(
+      "id, session_id, exercise, prescribed, actual, coach_notes, athlete_notes, completed_at, created_at, updated_at"
+    )
+    .eq("session_id", sessionId)
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return (data as ExercisePrescription[]) ?? null;
 }

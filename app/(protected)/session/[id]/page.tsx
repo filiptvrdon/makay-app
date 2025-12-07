@@ -1,6 +1,13 @@
 import Page from "@/components/shared/Page";
 import PageHeader from "@/components/page/PageHeader";
-import { getSessionById, type Session } from "./actions";
+import {
+  getSessionById,
+  getExercisePrescriptionsForSession,
+  type Session,
+} from "./actions";
+import ExercisePrescriptionsTable, {
+  type ExercisePrescriptionRow,
+} from "@/components/tables/ExercisePrescriptionsTable";
 
 type PageProps = {
   params: Promise<{ id: string }>; // Next.js 15: async params
@@ -15,6 +22,8 @@ export default async function SessionPage(props: PageProps) {
 
   let error: Error | null = null;
   let session: Session | null = null;
+  let prescriptions: ExercisePrescriptionRow[] | null = null;
+  let prescriptionsError: Error | null = null;
 
   try {
     session = await getSessionById(id);
@@ -23,6 +32,14 @@ export default async function SessionPage(props: PageProps) {
   }
 
   const backHref = session ? `/microcycle/${session.microcycle_id}` : "/coach/athlete";
+
+  if (!error && session) {
+    try {
+      prescriptions = (await getExercisePrescriptionsForSession(id)) as ExercisePrescriptionRow[] | null;
+    } catch (e) {
+      prescriptionsError = e as Error;
+    }
+  }
 
   return (
     <Page>
@@ -75,6 +92,18 @@ export default async function SessionPage(props: PageProps) {
                 <dd className="text-slate-200">{new Date(session.updated_at).toLocaleString()}</dd>
               </div>
             </dl>
+          </div>
+
+          {/* Exercise prescriptions */}
+          <div className="grid gap-2">
+            <h2 className="text-sm font-semibold text-slate-300">Exercise Prescriptions</h2>
+            {prescriptionsError ? (
+              <div className="rounded-md border border-red-900/60 bg-red-900/20 p-3 text-sm text-red-200">
+                Failed to load prescriptions: {prescriptionsError.message}
+              </div>
+            ) : (
+              <ExercisePrescriptionsTable prescriptions={prescriptions ?? []} />
+            )}
           </div>
         </section>
       ) : null}
